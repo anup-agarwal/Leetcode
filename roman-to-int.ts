@@ -40,22 +40,8 @@
 // s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 // It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 
-var romanToInt = function (s) {
-  const romans = [
-    "IV",
-    "IX",
-    "XL",
-    "XC",
-    "CD",
-    "CM",
-    "I",
-    "V",
-    "X",
-    "L",
-    "C",
-    "D",
-    "M",
-  ];
+var romanToInt = function (s: string) {
+  const romans = ['IV', 'IX', 'XL', 'XC', 'CD', 'CM', 'I', 'V', 'X', 'L', 'C', 'D', 'M'];
   const ints = [4, 9, 40, 90, 400, 900, 1, 5, 10, 50, 100, 500, 1000];
   let romanNumber = s;
   let value = 0;
@@ -63,9 +49,9 @@ var romanToInt = function (s) {
     let foundIndex = romanNumber.indexOf(romans[i]);
     while (foundIndex >= 0 && romanNumber.length) {
       value = value + ints[i];
-      let newRomanNumber = romanNumber.split("");
+      let newRomanNumber: string[] | string = romanNumber.split('');
       newRomanNumber.splice(foundIndex, romans[i].length);
-      newRomanNumber = newRomanNumber.join("");
+      newRomanNumber = newRomanNumber.join('');
       romanNumber = newRomanNumber;
       foundIndex = romanNumber.indexOf(romans[i]);
     }
@@ -73,4 +59,4 @@ var romanToInt = function (s) {
   return value;
 };
 
-console.log(romanToInt("MCMXCIV"));
+console.log(romanToInt('MCMXCIV'));
